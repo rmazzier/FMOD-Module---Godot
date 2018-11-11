@@ -1,0 +1,31 @@
+Import('env')
+
+sources = ["register_types.cpp", "fmod.cpp"]
+
+fmodapifolder = "C:/Program Files (x86)/FMOD SoundSystem/FMOD Studio API Windows/api"
+
+module_env = env.Clone()
+
+module_env.add_source_files(env.modules_sources, "*.cpp")
+#module_env.Append(CXXFLAGS=['-O2', '-std=c++11'])
+
+module_env.Append(CPPPATH=fmodapifolder + "/studio/inc")
+#module_env.Append(LIBPATH=fmodapifolder + "/studio/lib")
+module_env.Append(CPPPATH=fmodapifolder + "/lowlevel/inc")
+#module_env.Append(LIBPATH=fmodapifolder + "/lowlevel/lib")
+
+#if ARGUMENTS.get('fmod_shared', 'no') == 'yes':
+# module_env.Append(CXXFLAGS='-fPIC') # Needed to compile shared library
+# We don't want godot's dependencies to be injected into our shared library.
+# module_env['LIBS'] = []
+
+#define the shared library
+# shared_lib = module_env.SharedLibrary(target='#bin/fmod', source=sources)
+
+#notify main env it has our shared library as anew dependency
+# shared_lib_shim = shared_lib[0].name.rsplit('.', 1)[0]
+# env.Append(LIBS=[shared_lib_shim])
+# env.Append(LIBPATH=['#bin'])
+#else:
+    # Static compilation
+ #   module_env.add_source_files(env.modules_sources, sources)
