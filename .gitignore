@@ -1,0 +1,5 @@
+godot-master/*
+!godot-master/modules/
+
+godot-master/modules/*
+!godot-master/modules/fmod/
