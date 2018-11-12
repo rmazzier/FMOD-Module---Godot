@@ -6,7 +6,10 @@ module_env = env.Clone()
 
 module_env.add_source_files(env.modules_sources, "*.cpp")
 
-module_env.Append(CPPPATH=fmodapifolder + "/studio/inc")
-#module_env.Append(LIBPATH=fmodapifolder + "/studio/lib")
-module_env.Append(CPPPATH=fmodapifolder + "/lowlevel/inc")
-#module_env.Append(LIBPATH=fmodapifolder + "/lowlevel/lib")
+
+module_env.Append(CPPPATH=fmodapifolder + "/studio/inc/")
+module_env.Append(LIBPATH=['thirdparty/fmod/studio/lib/'])
+module_env.Append(CPPPATH=fmodapifolder + "/lowlevel/inc/")
+module_env.Append(LIBPATH=['thirdparty/fmod/lowlevel/lib/'])
+
+module_env.Append(LIBS=['libfmod','libfmodL','libfmodstudio','libfmodstudioL'])
